@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.lang.String;
 
 public class Exercises2 {
 
@@ -61,8 +62,112 @@ public class Exercises2 {
     */
 
     public int romanToInt(String s) {
-        // TODO
-        return 0;
+        int result = 0;
+        int size = s.length();
+        for (int i = 0; i < size; i++) {
+            if (i == size - 1){
+                if (s.charAt(i) == 'I'){
+                    result++;
+                }
+                if (s.charAt(i) == 'V'){
+                    result += 5;
+                }
+                if (s.charAt(i) == 'X'){
+                    result += 10;
+                }
+                if (s.charAt(i) == 'C'){
+                    result += 100;
+                }
+                if (s.charAt(i) == 'L'){
+                    result += 50;
+                }
+                if (s.charAt(i) == 'D'){
+                    result += 500;
+                }
+                if (s.charAt(i) == 'M'){
+                    result += 1000;
+                }
+            }
+            else {
+                if (s.charAt(i) == 'I') {
+                    if (s.charAt(i + 1) == 'V') {
+                        result += 4;
+                        i++;
+                    } else if (s.charAt(i + 1) == 'X') {
+                        result += 9;
+                        i++;
+                    } else if (s.charAt(i + 1) != 'I') {
+                        result++;
+                    } else {
+                        int j = i;
+                        int num = 0;
+                        while (s.charAt(j) == 'I') {
+                            num++;
+                            j++;
+                            if (j == size){
+                                break;
+                            }
+                        }
+                        result += num;
+                        i = j - 1;
+                    }
+                } else if (s.charAt(i) == 'V') {
+                    result += 5;
+                } else if (s.charAt(i) == 'X') {
+                    if (s.charAt(i + 1) == 'L') {
+                        result += 40;
+                        i++;
+                    } else if (s.charAt(i + 1) == 'C') {
+                        result += 90;
+                        i++;
+                    } else if (s.charAt(i + 1) != 'X') {
+                        result += 10;
+                    } else {
+                        int j = i;
+                        int num = 0;
+                        while (s.charAt(j) == 'X') {
+                            num += 10;
+                            j++;
+                            if (j == size){
+                                break;
+                            }
+                        }
+                        result += num;
+                        i = j - 1;
+                    }
+                } else if (s.charAt(i) == 'L') {
+                    result += 50;
+                } else if (s.charAt(i) == 'C') {
+                    if (s.charAt(i + 1) == 'D') {
+                        result += 400;
+                        i++;
+                    } else if (s.charAt(i + 1) == 'M') {
+                        result += 900;
+                        i++;
+                    } else if (s.charAt(i + 1) != 'C') {
+                        result += 100;
+                    } else {
+                        int j = i;
+                        int num = 0;
+                        while (s.charAt(j) == 'C') {
+                            num += 100;
+                            j++;
+                            if (j == size){
+                                break;
+                            }
+                        }
+                        result += num;
+                        i = j - 1;
+                    }
+                } else if (s.charAt(i) == 'D') {
+                    result += 500;
+                } else if (s.charAt(i) == 'M') {
+                    result += 1000;
+                }
+            }
+        }
+
+        return result;
     }
 
     /*
