@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.lang.String;
+import java.util.Collections;
 
 public class Exercises2 {
 
@@ -175,8 +176,48 @@ public class Exercises2 {
     You can return the answer in any order.
     */
 
+
+   /* public List<List<Integer>> recursive(List<List> list, List per, int[] nums, int count, int i){
+        int size = nums.length;
+        while (i < size){
+            per.add(nums[i]);
+            count--;
+            i++;
+            if (count == 2) {
+                if(i == size){
+                    i = 0;
+                }
+                per.add(nums[i]);
+                if(i+1 == size){
+                    per.add(nums[0]);
+                }
+                else{
+                    per.add(nums[i+1]);
+                }
+                list.add(per);
+                Collections.swap(per,size-2,size-1);
+                list.add(per);
+                per.clear();
+                count = size;
+                return  recursive(list,per,nums,count,i);
+            }
+            else {
+                int[] help = new int[size-1];
+                for (int k = 0; k < size-2; k++){
+                    help[k] = nums[k+1];
+                }
+                i = 0;
+                //count = help.length;
+                return  recursive(list,per,help,count,i);
+            }
+        }
+    }*/
     public List<List<Integer>> permute(int[] nums) {
-        // TODO
+        int size = nums.length;
+        int count = size;
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> permutation = new ArrayList<Integer>();
+
         return null;
     }
 
