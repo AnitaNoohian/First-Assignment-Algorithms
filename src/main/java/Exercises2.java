@@ -186,18 +186,17 @@ public class Exercises2 {
     public List<Integer> recursive(List<List<Integer>> list, List<Integer> per, int[] nums, int num, int size, int j) {
 
         if (num == size) {
-            //int j = size - 1;
             while (list.contains(per)) {
                 if (j == 0){
                     j = size - 1;
                 }
-                //while (true) {
-                    Collections.swap(per,j - 1,j);
-                    List<Integer> newper = new ArrayList<>();
-                    newper.addAll(per);
-                    j--;
-                    return recursive(list,newper,nums,num,size,j);
-                //}
+
+                Collections.swap(per,j - 1,j);
+                List<Integer> newper = new ArrayList<>();
+                newper.addAll(per);
+                j--;
+
+                return recursive(list,newper,nums,num,size,j);
             }
             return per;
         }
@@ -226,6 +225,6 @@ public class Exercises2 {
     }
 
     public static void main(String[] args) {
-        // test your code here!
+
     }
 }
