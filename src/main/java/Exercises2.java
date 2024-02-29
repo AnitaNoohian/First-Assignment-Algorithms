@@ -176,49 +176,53 @@ public class Exercises2 {
     You can return the answer in any order.
     */
 
-
-   /* public List<List<Integer>> recursive(List<List> list, List per, int[] nums, int count, int i){
-        int size = nums.length;
-        while (i < size){
-            per.add(nums[i]);
-            count--;
-            i++;
-            if (count == 2) {
-                if(i == size){
-                    i = 0;
-                }
-                per.add(nums[i]);
-                if(i+1 == size){
-                    per.add(nums[0]);
-                }
-                else{
-                    per.add(nums[i+1]);
-                }
-                list.add(per);
-                Collections.swap(per,size-2,size-1);
-                list.add(per);
-                per.clear();
-                count = size;
-                return  recursive(list,per,nums,count,i);
-            }
-            else {
-                int[] help = new int[size-1];
-                for (int k = 0; k < size-2; k++){
-                    help[k] = nums[k+1];
-                }
-                i = 0;
-                //count = help.length;
-                return  recursive(list,per,help,count,i);
-            }
+    public long factorial(int n) {
+        long result = 1;
+        for (int i = 1; i <= n; i++){
+            result *= i;
         }
-    }*/
+        return result;
+    }
+    public List<Integer> recursive(List<List<Integer>> list, List<Integer> per, int[] nums, int num, int size, int j) {
+
+        if (num == size) {
+            //int j = size - 1;
+            while (list.contains(per)) {
+                if (j == 0){
+                    j = size - 1;
+                }
+                //while (true) {
+                    Collections.swap(per,j - 1,j);
+                    List<Integer> newper = new ArrayList<>();
+                    newper.addAll(per);
+                    j--;
+                    return recursive(list,newper,nums,num,size,j);
+                //}
+            }
+            return per;
+        }
+        else {
+            for (int i = 0; i < size; i++){
+                if (!per.contains(nums[i])){
+                    per.add(nums[i]);
+                    break;
+                }
+            }
+            num++;
+            return recursive(list, per, nums, num, size,j);
+        }
+    }
     public List<List<Integer>> permute(int[] nums) {
         int size = nums.length;
-        int count = size;
         List<List<Integer>> list = new ArrayList<>();
-        List<Integer> permutation = new ArrayList<Integer>();
+        List<Integer> permutation = new ArrayList<>();
+        for (int i = 0; i < factorial(size); i++){
+            List<Integer> newpermutation = new ArrayList<>();
+            newpermutation = recursive(list,permutation,nums,0,size,size-1);
+            list.add(newpermutation);
 
-        return null;
+        }
+        return list;
     }
 
     public static void main(String[] args) {
