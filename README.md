@@ -1,5 +1,6 @@
 # Second Assignment Algorithms  📚
 
+
 Welcome to your second assignment in the Advanced Programming course! This repository contains three medium to somewhat hard problems. The main goal of this assignment is to help you learn more advanced parts of Java syntax and put your problem-solving skills to the test.
 
 ## Getting Started 🚀
